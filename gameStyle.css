@@ -32,6 +32,8 @@
 .incorrect{
     background-color: #dc3545;
 }
+
+/*HUD ELEMENTS */
  #hud{
     display: flex;
     justify-content: space-between;
@@ -43,5 +45,21 @@
  }
 
  .hud-main-text{
-    
+    text-align: center;
  }
+ /*END HUD ELEMENTS */
+
+ /*PROGRESS BAR ELEMENTS*/
+ #progressBar{
+   width: 20rem;
+   height: 4rem;
+   border: 0.3rem solid #56a5eb;
+   margin-top: 2rem;
+ }
+
+ #progressBarFull{
+    width: 0px;
+    height: 3.4rem;
+    background-color: #56a5eb;
+ }
+ /*END PROGRESS BAR ELEMENTS*/
