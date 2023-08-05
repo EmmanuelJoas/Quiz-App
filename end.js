@@ -2,32 +2,46 @@ const username = document.getElementById('username');
 const saveScoreBtn = document.getElementById('saveScoreBtn');
 const finalScore = document.getElementById('finalScore');
 const mostRecentScore = localStorage.getItem('mostRecentScore');
-const word1 = document.getElementById('word1');
+
+const hightscore = JSON.parse(localStorage.getItem("hightscore")) || [];
+
 finalScore.innerText = mostRecentScore;
 
 if (mostRecentScore<=10){
 
     finalScore.style.color ='red';
     finalScore.style.fontWeight = 'bold';
-    word1.innerText="Bien essayer reviser plus";
+    
 }
 else if (mostRecentScore<=50){
 
     finalScore.style.color = 'orange';
     finalScore.style.fontWeight = 'bold';
-    word1.innerText="Pas mal";
+    
 }
 else{
 
     finalScore.style.color = 'green';
     finalScore.style.fontWeight = 'bold';
-    word1.innerText="Parfait";
+    
 }
 
 username.addEventListener('keyup', () => {
     saveScoreBtn.disabled = !username.value;
 });
 
-saveHighScore = (e) => {
+
+SaveHighScore = (e) => {
     e.preventDefault();
+    const score = {
+        name: username.value,
+        score: mostRecentScore
+    };
+    
+    hightscore.push(score);
+    hightscore.sort((a, b) => a.score-b.score);
+    hightscore.splite(5);
+    
+    localStorage.setItem('hightscore', JSON.stringify(hightscore));  
+    window.location.assign("/");
 };
