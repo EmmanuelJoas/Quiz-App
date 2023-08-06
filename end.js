@@ -4,7 +4,7 @@ const finalScore = document.getElementById('finalScore');
 const mostRecentScore = localStorage.getItem('mostRecentScore');
 
 const hightscore = JSON.parse(localStorage.getItem("hightscore")) || [];
-
+console.log(hightscore);
 finalScore.innerText = mostRecentScore;
 
 if (mostRecentScore<=10){
@@ -40,7 +40,7 @@ SaveHighScore = (e) => {
     
     hightscore.push(score);
     hightscore.sort((a, b) => a.score-b.score);
-    hightscore.splite(5);
+    hightscore.splice(5);
     
     localStorage.setItem('hightscore', JSON.stringify(hightscore));  
     window.location.assign("/");
